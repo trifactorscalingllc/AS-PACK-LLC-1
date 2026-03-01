@@ -1,0 +1,124 @@
+/* Portfolio/Companies Page specific styles */
+
+.page-header {
+    padding-top: 150px;
+    padding-bottom: 80px;
+}
+
+.page-header h1 {
+    margin-bottom: 1.5rem;
+}
+
+.page-header p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.25rem;
+}
+
+.eyebrow {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.portfolio-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+}
+
+.roaster-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* Alternate layout for every other card */
+.roaster-card:nth-child(even) .roaster-content {
+    order: -1;
+}
+
+.roaster-image {
+    width: 100%;
+}
+
+.img-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 4px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+.region {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.roaster-content h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+}
+
+.roaster-content p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.specs {
+    list-style: none;
+    border-top: 1px solid var(--border);
+    padding-top: 2rem;
+}
+
+.specs li {
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.specs li strong {
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-right: 0.5rem;
+}
+
+/* Animations defined */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-on-scroll.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .roaster-card {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .roaster-card:nth-child(even) .roaster-content {
+        order: 0;
+        /* Reset ordering for mobile */
+    }
+
+    .roaster-content h2 {
+        font-size: 2rem;
+    }
+}

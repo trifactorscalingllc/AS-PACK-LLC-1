@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Italian Coffee Representative</title>
+    <meta name="description" content="Get in touch to elevate your coffee program.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/contact.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">L'Espresso.</a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="companies.html">Portfolio</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Page Header -->
+        <header class="page-header section bg-main">
+            <div class="container text-center animate-on-scroll">
+                <span class="eyebrow">Let's Connect</span>
+                <h1>Elevate Your Coffee Program</h1>
+                <p>Whether you represent a boutique hotel, an artisanal bakery, or a specialized cafe, we are ready to
+                    supply you with Italy's finest roasts.</p>
+            </div>
+        </header>
+
+        <!-- Contact Section -->
+        <section class="contact-section section bg-secondary">
+            <div class="container contact-container">
+
+                <div class="contact-info animate-on-scroll">
+                    <h2>Get in Touch</h2>
+                    <p>Reach out directly or use the form to request a private consultation or tasting. We aim to
+                        respond to all inquiries within 24 hours.</p>
+
+                    <div class="info-group">
+                        <h3>Direct Contact</h3>
+                        <p><a href="mailto:contact@lespresso.com">contact@lespresso.com</a></p>
+                        <p><a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+                    </div>
+
+                    <div class="info-group">
+                        <h3>Operating Hours</h3>
+                        <p>Monday - Friday<br>9:00 AM - 6:00 PM EST</p>
+                    </div>
+
+                    <div class="social-links info-social">
+                        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                        <a href="#" aria-label="Instagram">Instagram</a>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper animate-on-scroll">
+                    <form id="inquiryForm" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required aria-required="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required aria-required="true">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Business Email *</label>
+                            <input type="email" id="email" name="email" required aria-required="true">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company">Company / Business Name *</label>
+                            <input type="text" id="company" name="company" required aria-required="true">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="businessType">Business Type</label>
+                            <select id="businessType" name="businessType">
+                                <option value="" disabled selected>Select an option...</option>
+                                <option value="cafe">Cafe / Coffee Shop</option>
+                                <option value="restaurant">Restaurant</option>
+                                <option value="hotel">Hotel / Hospitality</option>
+                                <option value="distributor">Distributor</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">How can we help you? *</label>
+                            <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-submit">Send Inquiry</button>
+
+                        <div id="formStatus" class="form-status" aria-live="polite"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="index.html" class="footer-logo">L'Espresso.</a>
+                <p>Bringing Italy's Finest to the World.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                    <a href="#" aria-label="Instagram">Instagram</a>
+                    <a href="mailto:contact@example.com">Email</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; <span id="year"></span> L'Espresso Representative. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Simple Form Interaction
+        const form = document.getElementById('inquiryForm');
+        const status = document.getElementById('formStatus');
+
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const btn = form.querySelector('.btn-submit');
+                const originalText = btn.textContent;
+
+                btn.textContent = 'Sending...';
+                btn.disabled = true;
+
+                // Simulate API call
+                setTimeout(() => {
+                    status.textContent = 'Thank you for your inquiry. We will be in touch shortly.';
+                    status.className = 'form-status success';
+                    form.reset();
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+
+                    setTimeout(() => {
+                        status.textContent = '';
+                        status.className = 'form-status';
+                    }, 5000);
+                }, 1500);
+            });
+        }
+    </script>
+</body>
+
+</html>

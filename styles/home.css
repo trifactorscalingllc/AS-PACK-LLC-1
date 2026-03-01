@@ -1,0 +1,202 @@
+/* Home page specific styles */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+    /* offset for nav */
+    position: relative;
+    overflow: hidden;
+}
+
+/* We will use a soft radial gradient as a background accent since we are minimalist and don't want a massive heavy image immediately. */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50vw;
+    height: 100%;
+    background: radial-gradient(circle at center, var(--bg-secondary) 0%, var(--bg-main) 70%);
+    z-index: -1;
+    opacity: 0.6;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.eyebrow {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 1.5rem;
+}
+
+.hero-text h1 {
+    margin-bottom: 2rem;
+}
+
+.hero-text p {
+    margin-bottom: 3rem;
+    font-size: 1.25rem;
+    max-width: 90%;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* Value Props */
+.text-center {
+    text-align: center;
+}
+
+.section-header {
+    max-width: 700px;
+    margin: 0 auto 4rem;
+}
+
+.section-header h2 {
+    margin-bottom: 1rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.feature-card {
+    background: white;
+    padding: 3rem 2rem;
+    border-radius: 4px;
+    /* Slight rounding to keep it feeling slightly softer */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+    text-align: center;
+    border: 1px solid var(--border);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+
+.feature-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: var(--text-primary);
+}
+
+.feature-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.feature-card p {
+    font-size: 1rem;
+}
+
+/* About Section */
+.bg-secondary {
+    background-color: var(--bg-secondary);
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.about-image .image-wrapper {
+    aspect-ratio: 4/5;
+    background-color: var(--text-primary);
+    /* Dark placeholder representing the rep */
+    border-radius: 4px;
+    position: relative;
+}
+
+.about-image .image-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--accent);
+    z-index: -1;
+    border-radius: 4px;
+}
+
+.about-text h2 {
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+}
+
+/* Animations defined */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-on-scroll.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+
+    .hero-content,
+    .about-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero::before {
+        width: 100%;
+        background: radial-gradient(circle at top, var(--bg-secondary) 0%, var(--bg-main) 70%);
+    }
+
+    .hero-text p {
+        margin: 0 auto 3rem;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+}
