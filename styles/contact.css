@@ -21,7 +21,12 @@
     text-transform: uppercase;
     letter-spacing: 0.2em;
     color: var(--accent);
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: rgba(39, 174, 96, 0.1);
+    border: 1px solid rgba(39, 174, 96, 0.2);
+    border-radius: var(--radius-pilled);
     margin-bottom: 1rem;
 }
 
@@ -49,7 +54,7 @@
 }
 
 .info-group h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-family: var(--font-body);
     font-weight: 600;
     margin-bottom: 0.5rem;
@@ -72,10 +77,10 @@
 
 /* Form Styles */
 .contact-form-wrapper {
-    background-color: white;
+    background-color: var(--bg-secondary);
     padding: 3.5rem;
-    border-radius: 4px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
     border: 1px solid var(--border);
 }
 
@@ -104,7 +109,7 @@ textarea {
     padding: 0.875rem 1rem;
     background-color: var(--bg-main);
     border: 1px solid var(--border);
-    border-radius: 2px;
+    border-radius: var(--radius-sm);
     font-family: var(--font-body);
     font-size: 1rem;
     color: var(--text-primary);
@@ -116,11 +121,17 @@ select:focus,
 textarea:focus {
     outline: none;
     border-color: var(--accent);
-    background-color: white;
+    background-color: #1a1a1a;
+    box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
 }
 
 textarea {
     resize: vertical;
+}
+
+.form-group select option {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
 }
 
 .btn-submit {
@@ -141,19 +152,7 @@ textarea {
 }
 
 .form-status.success {
-    color: #2e7d32;
-}
-
-/* Animations defined */
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.animate-on-scroll.fade-in {
-    opacity: 1;
-    transform: translateY(0);
+    color: var(--accent);
 }
 
 /* Responsive */

@@ -4,23 +4,9 @@
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding-top: 80px;
-    /* offset for nav */
+    padding-top: 100px;
     position: relative;
     overflow: hidden;
-}
-
-/* We will use a soft radial gradient as a background accent since we are minimalist and don't want a massive heavy image immediately. */
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 50vw;
-    height: 100%;
-    background: radial-gradient(circle at center, var(--bg-secondary) 0%, var(--bg-main) 70%);
-    z-index: -1;
-    opacity: 0.6;
 }
 
 .hero-content {
@@ -36,12 +22,18 @@
     text-transform: uppercase;
     letter-spacing: 0.2em;
     color: var(--accent);
-    display: block;
-    margin-bottom: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: rgba(39, 174, 96, 0.1);
+    /* Subtle green pill */
+    border: 1px solid rgba(39, 174, 96, 0.2);
+    border-radius: var(--radius-pilled);
+    margin-bottom: 2rem;
 }
 
 .hero-text h1 {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .hero-text p {
@@ -66,40 +58,59 @@
 }
 
 .section-header h2 {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
+    gap: 2rem;
 }
 
 .feature-card {
-    background: white;
-    padding: 3rem 2rem;
-    border-radius: 4px;
-    /* Slight rounding to keep it feeling slightly softer */
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
-    text-align: center;
+    background: var(--bg-secondary);
+    padding: 3rem 2.5rem;
+    border-radius: var(--radius-md);
     border: 1px solid var(--border);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .feature-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.feature-card:hover::before {
+    opacity: 1;
 }
 
 .feature-icon {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background-color: var(--bg-secondary);
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background-color: var(--bg-main);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1.5rem;
-    color: var(--text-primary);
+    margin-bottom: 2rem;
+    color: var(--accent);
+    border: 1px solid var(--border);
 }
 
 .feature-card h3 {
@@ -114,6 +125,8 @@
 /* About Section */
 .bg-secondary {
     background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 }
 
 .about-container {
@@ -125,27 +138,25 @@
 
 .about-image .image-wrapper {
     aspect-ratio: 4/5;
-    background-color: var(--text-primary);
-    /* Dark placeholder representing the rep */
-    border-radius: 4px;
+    background-color: var(--bg-main);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
     position: relative;
+    overflow: hidden;
 }
 
 .about-image .image-wrapper::after {
     content: '';
     position: absolute;
-    bottom: -20px;
-    right: -20px;
-    width: 100%;
-    height: 100%;
-    border: 2px solid var(--accent);
-    z-index: -1;
-    border-radius: 4px;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.8) 150%);
+    z-index: 1;
 }
 
 .about-text h2 {
     margin-bottom: 2rem;
     font-style: italic;
+    color: var(--text-primary);
 }
 
 .about-text p {
@@ -155,8 +166,8 @@
 /* Animations defined */
 .animate-on-scroll {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .animate-on-scroll.fade-in {
@@ -173,11 +184,6 @@
         text-align: center;
     }
 
-    .hero::before {
-        width: 100%;
-        background: radial-gradient(circle at top, var(--bg-secondary) 0%, var(--bg-main) 70%);
-    }
-
     .hero-text p {
         margin: 0 auto 3rem;
     }
@@ -188,6 +194,14 @@
 
     .features-grid {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .feature-card {
+        text-align: center;
+    }
+
+    .feature-icon {
+        margin: 0 auto 2rem;
     }
 }
 

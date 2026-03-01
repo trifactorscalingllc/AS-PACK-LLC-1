@@ -21,7 +21,12 @@
     text-transform: uppercase;
     letter-spacing: 0.2em;
     color: var(--accent);
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: rgba(39, 174, 96, 0.1);
+    border: 1px solid rgba(39, 174, 96, 0.2);
+    border-radius: var(--radius-pilled);
     margin-bottom: 1rem;
 }
 
@@ -32,7 +37,7 @@
 .portfolio-grid {
     display: flex;
     flex-direction: column;
-    gap: 6rem;
+    gap: 4rem;
 }
 
 .roaster-card {
@@ -40,6 +45,17 @@
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
+    background: var(--bg-secondary);
+    padding: 3rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.roaster-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Alternate layout for every other card */
@@ -54,12 +70,25 @@
 .img-placeholder {
     width: 100%;
     aspect-ratio: 4/3;
-    border-radius: 4px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    background-color: var(--bg-main) !important;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.img-placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.8) 150%);
 }
 
 .region {
+    font-family: var(--font-body);
     font-size: 0.875rem;
+    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--accent);
@@ -85,32 +114,21 @@
 
 .specs li {
     margin-bottom: 0.75rem;
-    color: var(--text-secondary);
+    color: var(--text-muted);
 }
 
 .specs li strong {
     color: var(--text-primary);
-    font-weight: 500;
+    font-weight: 600;
     margin-right: 0.5rem;
-}
-
-/* Animations defined */
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.animate-on-scroll.fade-in {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 /* Responsive */
 @media (max-width: 992px) {
     .roaster-card {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 3rem;
+        padding: 2rem;
     }
 
     .roaster-card:nth-child(even) .roaster-content {
